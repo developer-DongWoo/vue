@@ -1,21 +1,24 @@
 <template>
-  <div>
-    <!-- Display kline data -->
-    <ul>
-      <WebSocketComponent></WebSocketComponent>
-    </ul>
+  <div id="app">
+    <Header></Header>
+    <div id="component" class="component">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
-import WebSocketComponent from './components/WebSocket.vue'; // WebSocketComponent import
+import Header from './components/layout/Header.vue'
 
 export default {
   name: 'App',
-  components: {
-    WebSocketComponent, // 컴포넌트 등록
-  },
-  // ... 나머지 코드
-};
-</script>
 
+  components: {
+    Header,
+  },
+
+  data: () => ({
+    //
+  }),
+}
+</script>

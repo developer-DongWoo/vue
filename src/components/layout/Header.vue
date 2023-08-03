@@ -1,7 +1,8 @@
 <template>
     <div class="navbar">
-      <div class="logo">SINAMON</div>
+      <div class="logo" @click="navigateTo('home')" >SINAMON</div>
       <!-- 햄버거 버튼 -->
+      <div class="modal-background" v-if="isMenuOpen" @click="toggleMenu"></div>
       <div>
         <div class="hamburger-icon" @click="toggleMenu">
             <span class="hamburger-line"></span>
@@ -9,10 +10,10 @@
             <span class="hamburger-line"></span>
         </div>
         <div class="menu" :class="{ 'menu-opened': isMenuOpen }">
-            <div class="menu-item" @click="navigateTo('home')">BOT 콘솔</div>
-            <div class="menu-item" @click="navigateTo('about')">BOT 주문제작 의뢰</div>
-            <div class="menu-item" @click="navigateTo('services')">SHOP</div>
-            <div class="menu-item" @click="navigateTo('contact')">Log In</div>
+            <div class="menu-item" @click="navigateTo('botConsole')">BOT 콘솔</div>
+            <div class="menu-item" @click="navigateTo('customRequest')">BOT 주문제작 의뢰</div>
+            <div class="menu-item" @click="navigateTo('payment')">SHOP</div>
+            <div class="menu-item" @click="navigateTo('login')">Log-In</div>
         </div>
       </div>
       
@@ -29,9 +30,8 @@
     },
     methods: {
       navigateTo(route) {
-        // 여기에서 라우팅을 처리하는 로직을 추가
-        // 예를 들어, Vue Router를 사용하여 다른 페이지로 이동할 수 있음
-        console.log(`Navigating to ${route} page`);
+        this.$router.push({ name: route });
+        this.isMenuOpen = false;
       },
       toggleMenu() {
         // 햄버거 버튼 클릭시 메뉴 열고 닫는 로직

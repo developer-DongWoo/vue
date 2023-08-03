@@ -16,6 +16,7 @@ body, h1, h2, h3, p, ul, li {
   
   /* 로고 스타일 */
   .logo {
+    cursor: pointer; 
     font-size: 1.5rem;
     font-weight: bold;
   }
@@ -54,6 +55,17 @@ body, h1, h2, h3, p, ul, li {
     margin-bottom: 5px;
   }
   
+    /* 모달 백그라운드 스타일 */
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 투명도 조정 */
+    z-index: 9997; /* 다른 요소보다 위에 표시하기 위한 z-index 값 */
+  }
+
   /* 미디어 쿼리를 사용하여 특정 화면 크기에 대한 스타일링 적용 */
   /* 예시로 화면 너비가 600px 이하일 때 스타일 변경 */
   @media (max-width: 600px) {
@@ -68,6 +80,7 @@ body, h1, h2, h3, p, ul, li {
       align-items: flex-start; /* 왼쪽 정렬 */
       position: fixed;
       background-color: #64bf84;
+      z-index: 9999;
     }
   
     .menu-item {
@@ -92,3 +105,180 @@ body, h1, h2, h3, p, ul, li {
     }
   }
   
+
+
+
+
+
+  /*  ------------------------------- signup **/ 
+
+  .sign-up-title {
+    font-size: xx-large;
+    text-align: center;
+  }
+  .sign-up-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 50px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="email"],
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4aa96c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .submit-button:hover {
+    background-color: #469c5d;
+  }
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* input 요소를 100% 너비로 확장 */
+  .input-container input {
+    flex: 1;
+  }
+  
+  /* 버튼을 오른쪽에 배치 */
+  .input-container .check-duplicate-button {
+    margin-left: 10px;
+  }
+
+
+  /* 입력란과 버튼을 수평 정렬 */
+.input-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* 입력란의 스타일 */
+  .input-container input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* 버튼의 스타일 */
+  .input-container .check-duplicate-button {
+    margin-left: 10px;
+    padding: 8px 16px;
+    background-color: #4aa96c;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* 마우스를 올렸을 때 버튼의 배경색 변경 */
+  .input-container .check-duplicate-button:hover {
+    background-color: #3a874f;
+  }
+  
+
+  /*  ------------------------------- 로그인 **/ 
+
+  .login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    margin-top: 50px;
+  }
+  
+  .login-title {
+    font-size: xx-large;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="email"],
+  input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4aa96c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .login-button:hover {
+    background-color: #469c5d;
+  }
+  
+  .options-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .signup-link,
+  .forgot-password-link {
+    text-decoration: underline;
+    color: #4aa96c;
+    cursor: pointer;
+  }
+  
+  .signup-link:hover,
+  .forgot-password-link:hover {
+    color: #3a874f;
+  }
+

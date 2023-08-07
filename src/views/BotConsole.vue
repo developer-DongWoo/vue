@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+        봇 콘솔
     </div>
 </template>
 <script>

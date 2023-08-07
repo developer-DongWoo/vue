@@ -1,27 +1,38 @@
 <template>
   <!-- <button @click="login">Login</button> -->
   <div class="container-fluid" :style="{ backgroundColor: mainColor }" id="navBar-background">
+    
     <div id="logo-wrapper">
       <router-link  :style="{ color: lightFontColor }" to="/"><div id="logo">Sinamon</div></router-link>
-      <HamburgerButton id="hamburgerComponent" :style="{ backgroundColor: mainColor }" @click="toggleNavMenu"></HamburgerButton>
+      <!-- <button id="hamburgerComponent" :style="{ backgroundColor: mainColor }" @click="toggleNavMenu"> -->
+        <button
+          id="HamburgerButtonBox"
+          :style="{ backgroundColor: mainColor }"
+          @click="toggleNavMenu"
+        >
+          <span id="hamburgerLine_1" :class="{ active: showNavMenu }"></span>
+          <span id="hamburgerLine_2" :class="{ active: showNavMenu }"></span>
+          <span id="hamburgerLine_3" :class="{ active: showNavMenu }"></span>
+        </button>
+      <!-- </button> -->
 
       <div id="menu" >
-        <ul :style="{ backgroundColor: mainColor }">
+        <ul :style="{ backgroundColor: mainColor }" :class="{open:showNavMenu}" @click="routerClicked">
           <router-link class="menu-item" to="/bot-console" :style="{ color: lightFontColor }"><li>Bot-Console</li></router-link>
           <router-link class="menu-item" to="/bot-order" :style="{ color: lightFontColor }"><li>Bot-주문제작</li></router-link>
           <router-link class="menu-item" to="/plan-purchase" :style="{ color: lightFontColor }"><li>Payment</li></router-link>
 
-          <li class="menu-item" :style="{ color: lightFontColor }" @click="toggleUserMenu">
+          <li class="menu-item" :style="{ color: lightFontColor }" @click.stop="toggleUserMenu">
             User
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
               <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
             </svg>
 
-              <div v-if="showUserMenu" :style="{ backgroundColor: mainColor }" class="user-menu">
-                <div v-if="!isLoggedIn">
-                  <router-link to="/login"><li>로그인</li></router-link>
-                  <router-link to="/signup"><li>회원가입</li></router-link>
-                  <router-link to="/forgot-password"><li>비밀번호 찾기</li></router-link>
+              <div class="user-menu" :class="{ open: showUserMenu }" :style="{ backgroundColor: mainColor }" >
+                <div v-if="!isLoggedIn" >
+                  <router-link v-if="showUserMenu" to="/login" @click="routerClicked"><li>로그인</li></router-link>
+                  <router-link v-if="showUserMenu" to="/signup" @click="routerClicked"><li>회원가입</li></router-link>
+                  <router-link v-if="showUserMenu" to="/forgot-password" @click="routerClicked"><li>비밀번호 찾기</li></router-link>
                 </div>
                 <div v-else>
                   <router-link to="/my-page"><li>마이페이지</li></router-link>
@@ -33,12 +44,13 @@
       </div>
     </div>
     <!-- <section v-if="showUserMenu" class="darkBackground" @click="toggleUserMenu"></section> -->
-    
+    <div v-if="showDarkBackground" class="dark-background" @click="darkBackgroundClicked" />
   </div>
 </template>
 
 <script>
-import HamburgerButton from "../ui/HamburgerButton";
+// import HamburgerButton from "../ui/HamburgerButton";
+// import DarkBackground from "../ui/DarkBackground";
 
 export default {
   name: "VueHeader",
@@ -55,33 +67,38 @@ export default {
   },
   data() {
     return {
-      showUserMenu: false, // 초기에는 드롭다운 메뉴를 감춤
-      showNavMenu: false
+      showUserMenu: false, 
+      showNavMenu: false,
+      showDarkBackground: false
     };
   },
   methods: {
-    toggleUserMenu() {
-      this.showUserMenu = !this.showUserMenu; // 드롭다운 메뉴 토글
-    },
     toggleNavMenu() {
       this.showNavMenu = !this.showNavMenu;
-
-      // 모달이 열려있을 때 body 스크롤 방지
-      if (this.showNavMenu || this.showUserMenu) {
-        document.body.style.overflow = "hidden";
-      } else {
-        document.body.style.overflow = "auto";
+      this.showUserMenu = false;
+      this.showDarkBackground = this.showNavMenu;
+    },
+    toggleUserMenu(){
+      this.showUserMenu = !this.showUserMenu;
+      if (!this.showNavMenu){
+        this.showDarkBackground = this.showUserMenu;
       }
+    },
+    darkBackgroundClicked() {
+      this.routerClicked()
+      
+    },
+    routerClicked() {
+      this.showNavMenu = false;
+      this.showUserMenu = false;
+      this.showDarkBackground = false;
     }
-    // login() {
-    //   const credentials = { username: "john_doe", password: "password123" };
-    //   this.$store.dispatch("login", credentials); // 'auth/login' 액션을 호출하고 credentials를 전달
-    // }
-  },
+},
   components: {
-    HamburgerButton
-  }
-};
+    // HamburgerButton,
+    // DarkBackground
+  }}
+
 </script>
 
 <style>
@@ -120,7 +137,9 @@ export default {
   display: flex;
   margin: 0;
   padding: 0;
+  z-index: 1;
 }
+
 #menu a {
   text-decoration: none;
 }
@@ -153,9 +172,15 @@ export default {
   display: flex;
   flex-direction: column;
   min-width: 150px;
-  z-index: 9; /* 다른 요소보다 위로 올라오도록 설정 */
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
-  
+  z-index: 9;
+  transition: max-height 0.1s ease, opacity 0.1s ease; /* 트랜지션 속성 추가 */
+  max-height: 0; /* 기본으로 최대 높이를 0으로 설정하여 숨김 */
+  opacity: 0; /* 기본으로 투명도를 0으로 설정하여 숨김 */
+}
+.user-menu.open {
+  max-height: 200px; /* 메뉴가 열릴 때 최대 높이 설정 */
+  opacity: 1; /* 메뉴가 열릴 때 투명도 설정 */
+  transition: max-height 0.2s ease, opacity 0.2s ease; /* 트랜지션 속성 추가 */
 }
 .user-menu ul {
   list-style: none;
@@ -193,25 +218,55 @@ export default {
   width: 100%; /* 마우스 호버링 시 밑줄의 너비를 100%로 변경하여 나타나도록 함 */
 }
 
-/* .darkBackground{
-  z-index: 100;
-  margin-top: -70px;
-  padding: 0;
-  position: fixed;
-  width: 110vw;
-  height: 110vh;
-  background-color: rgba(0, 0, 0, 0.2);
-} */
-#hamburgerComponent{
+#HamburgerButtonBox{
   display: none;
   margin-right: 10px;
   border-style: solid;
   border-radius: 5px;
-  border-color: white;
+  border-color: rgb(255, 255, 255);
+  width: 42px;
+    height: 42px;
+    background-color: transparent;
+    border-width: 1px;
+    cursor: pointer;
 }
-#hamburgerComponent:active{
+
+#hamburgerLine_1,
+  #hamburgerLine_2,
+  #hamburgerLine_3 {
+    display: block;
+    width: 30px;
+    height: 3px;
+    margin: 6px auto;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    background-color: rgb(200, 252, 209);
+  }
+  
+  #hamburgerLine_1.active {
+    transform:  translateY(9px) rotate(405deg);
+  }
+  
+  #hamburgerLine_2.active {
+    opacity: 0;
+  }
+  
+  #hamburgerLine_3.active {
+    transform: translateY(-9px) rotate(-405deg);
+  }
+
+
+#HamburgerButtonBox:active{
   border-color: rgb(205, 255, 213);
 }
+.dark-background{
+  position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(3, 59, 20);
+    opacity: 0.2;
+    z-index: -3;
+}
+
 
 @media (max-width: 767px) {
   .navbar-nav {
@@ -233,6 +288,8 @@ export default {
   
   }
 
+
+
   #menu ul {
     width:200px;
     display: block;
@@ -240,6 +297,16 @@ export default {
     right: 0;
     top:60px;
     padding: 10px;
+    transition: max-height 0.2s ease, opacity 0.2s ease; /* 트랜지션 속성 추가 */
+    max-height: 0; /* 기본으로 최대 높이를 0으로 설정하여 숨김 */
+    opacity: 0; /* 기본으로 투명도를 0으로 설정하여 숨김 */
+    z-index: 1;
+    }
+    #menu ul.open{
+    max-height: none; /* 메뉴가 열릴 때 최대 높이 설정 */
+    opacity: 1; /* 메뉴가 열릴 때 투명도 설정 */
+    transition: max-height 0.2s ease, opacity 0.2s ease; /* 트랜지션 속성 추가 */
+    z-index: 1;
   }
   #menu li {
     padding: 3px;
@@ -254,7 +321,7 @@ export default {
     right: -10%;
     border-width: 0;
   }
-  #hamburgerComponent {
+  #HamburgerButtonBox {
     display: block;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
   }

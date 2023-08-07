@@ -9,9 +9,14 @@ export default new Vuex.Store({
     url: "http://localhost.com",
     mainColor : "#03C988",
     lightFontColor : "white",
-    DarkFontColor : "black"
+    DarkFontColor : "black",
+    showMenu: false
   },
-  mutations: {},
+  mutations: {
+    toggleMenu(state) {
+        state.showMenu = !state.showMenu;
+      }
+  },
   actions: {},
   getters: {},
   modules: {

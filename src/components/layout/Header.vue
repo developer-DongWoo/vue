@@ -154,7 +154,6 @@ export default {
   /* color: rgb(250, 213, 178); */
   animation: shake 0.3s; /* 에니메이션 효과를 적용합니다. */
 }
-
 /* 에니메이션 키 프레임 정의 */
 @keyframes shake {
   0%, 100% { transform: translateY(0); }

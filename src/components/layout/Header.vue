@@ -3,7 +3,7 @@
   <div class="container-fluid" :style="{ backgroundColor: mainColor }" id="navBar-background">
     
     <div id="logo-wrapper">
-      <router-link  :style="{ color: lightFontColor }" to="/"><div id="logo">Sinamon</div></router-link>
+      <router-link  :style="{ color: logoColor }" to="/"><div id="logo">Sinamon</div></router-link>
       <!-- <button id="hamburgerComponent" :style="{ backgroundColor: mainColor }" @click="toggleNavMenu"> -->
         <button
           id="HamburgerButtonBox"
@@ -17,19 +17,19 @@
       <!-- </button> -->
 
       <div id="menu" >
-        <ul :style="{ backgroundColor: mainColor }" :class="{open:showNavMenu}" @click="routerClicked">
+        <ul :class="{open:showNavMenu}" @click="routerClicked">
           <router-link class="menu-item" to="/bot-console" :style="{ color: lightFontColor }"><li>Bot-Console</li></router-link>
           <router-link class="menu-item" to="/bot-order" :style="{ color: lightFontColor }"><li>Bot-주문제작</li></router-link>
           <router-link class="menu-item" to="/plan-purchase" :style="{ color: lightFontColor }"><li>Payment</li></router-link>
 
-          <li class="menu-item" :style="{ color: lightFontColor }" @click.stop="toggleUserMenu">
+          <li class="menu-item" @click.stop="toggleUserMenu">
             User
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
               <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
             </svg>
 
-              <div class="user-menu" :class="{ open: showUserMenu }" :style="{ backgroundColor: mainColor }" >
-                <div v-if="!isLoggedIn" >
+              <div v-if="showUserMenu" class="user-menu" :class="{ open: showUserMenu }" :style="{ backgroundColor: mainColor }" >
+                <div v-if="!isLoggedIn">
                   <router-link v-if="showUserMenu" to="/login" @click="routerClicked"><li>로그인</li></router-link>
                   <router-link v-if="showUserMenu" to="/signup" @click="routerClicked"><li>회원가입</li></router-link>
                   <router-link v-if="showUserMenu" to="/forgot-password" @click="routerClicked"><li>비밀번호 찾기</li></router-link>
@@ -63,13 +63,19 @@ export default {
     },
     isLoggedIn() {
       return this.$store.state.auth.isLoggedIn;
+    },
+    logoColor(){
+      return this.$store.state.logoColor;
+    },
+    mainColor2(){
+      return this.$store.state.mainColor2
     }
   },
   data() {
     return {
       showUserMenu: false, 
       showNavMenu: false,
-      showDarkBackground: false
+      showDarkBackground: false,
     };
   },
   methods: {
@@ -113,6 +119,7 @@ export default {
   font-size: 40px;
   margin-left: 10px;
   cursor: pointer;
+  font-weight: 900;
 }
 
 #logo-wrapper {
@@ -142,12 +149,15 @@ export default {
 
 #menu a {
   text-decoration: none;
+  color: #00410d;
 }
 #menu li {
   margin-right: 20px;
   cursor: pointer;
   position: relative; /* 에니메이션을 위해 포지션을 설정합니다. */
+  color: #00410d;
 }
+
 
 /* 마우스를 올렸을 때 글자색 변경 및 에니메이션 효과 적용 */
 #menu a.menu-item:hover {
@@ -171,7 +181,7 @@ export default {
   display: flex;
   flex-direction: column;
   min-width: 150px;
-  z-index: 9;
+  z-index: 1;
   transition: max-height 0.1s ease, opacity 0.1s ease; /* 트랜지션 속성 추가 */
   max-height: 0; /* 기본으로 최대 높이를 0으로 설정하여 숨김 */
   opacity: 0; /* 기본으로 투명도를 0으로 설정하여 숨김 */
@@ -180,6 +190,9 @@ export default {
   max-height: 200px; /* 메뉴가 열릴 때 최대 높이 설정 */
   opacity: 1; /* 메뉴가 열릴 때 투명도 설정 */
   transition: max-height 0.2s ease, opacity 0.2s ease; /* 트랜지션 속성 추가 */
+  z-index: 1;
+  background-color: rgba(200, 231, 211, 0.6);
+  
 }
 .user-menu ul {
   list-style: none;
@@ -197,7 +210,7 @@ export default {
   display: block;
   z-index: 1;
   position: relative;
-  color: #ffffff; /* 검은색에서 다른 색상으로 변경 */
+  color: #00410d; /* 검은색에서 다른 색상으로 변경 */
   font-weight: bold; /* 글자 굵기 조정 */
   font-size: 18px; /* 글자 크기 조정 */
 }
@@ -238,7 +251,7 @@ export default {
     height: 3px;
     margin: 6px auto;
     transition: transform 0.2s ease, opacity 0.2s ease;
-    background-color: rgb(200, 252, 209);
+    background-color: rgb(132, 226, 148);
   }
   
   #hamburgerLine_1.active {
@@ -263,7 +276,6 @@ export default {
     height: 100vh;
     background-color: rgb(3, 59, 20);
     opacity: 0.2;
-    z-index: -3;
 }
 
 
@@ -283,15 +295,16 @@ export default {
     display: none;}
   #menu {
     display: block;
-    position:fixed
-  
+    position:fixed;
+    z-index: 1;
+    color: #00410d;
   }
 
 
 
   #menu ul {
     width:200px;
-    display: block;
+    display: none;
     position: fixed;
     right: 0;
     top:60px;
@@ -300,12 +313,17 @@ export default {
     max-height: 0; /* 기본으로 최대 높이를 0으로 설정하여 숨김 */
     opacity: 0; /* 기본으로 투명도를 0으로 설정하여 숨김 */
     z-index: 1;
+    
     }
-    #menu ul.open{
+  #menu ul.open{
+    display: block;
     max-height: none; /* 메뉴가 열릴 때 최대 높이 설정 */
     opacity: 1; /* 메뉴가 열릴 때 투명도 설정 */
     transition: max-height 0.2s ease, opacity 0.2s ease; /* 트랜지션 속성 추가 */
     z-index: 1;
+    background-color: rgba(200, 231, 211, 0.6);
+    border-radius: 3px;
+    color: #00410d;
   }
   #menu li {
     padding: 3px;
@@ -319,10 +337,17 @@ export default {
     top: 0%;
     right: -10%;
     border-width: 0;
+    z-index: 1;
+    
   }
+  .user-menu.open{
+    background-color: #00410d00;
+  }
+
   #HamburgerButtonBox {
     display: block;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
   }
+
     }
 </style>

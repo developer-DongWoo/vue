@@ -6,9 +6,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    url: "http://localhost.com",
-    mainColor : "#03C988",
-    lightFontColor : "white",
+    url: "https://1a44-121-176-132-24.ngrok-free.app",
+    mainColor : "rgba(126, 246, 156, 0);",
+    mainColor2 : "green",
+    logoColor: "#2E8B57",
+    lightFontColor : "#3CB371",
     DarkFontColor : "black",
     showMenu: false
   },

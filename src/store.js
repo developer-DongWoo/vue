@@ -12,15 +12,23 @@ export default new Vuex.Store({
     logoColor: "#2E8B57",
     lightFontColor : "#3CB371",
     DarkFontColor : "black",
-    showMenu: false
+    showMenu: false,
+    currentBotPage : "dashboard"
   },
   mutations: {
     toggleMenu(state) {
         state.showMenu = !state.showMenu;
-      }
+      },
+    setCurrentBotPage(state, page) {
+      state.currentBotPage = page;
+    }
   },
   actions: {},
-  getters: {},
+  getters: {
+    getCurrentBotPage(state) {
+      return state.currentBotPage;
+    }
+  },
   modules: {
     auth, // 임포트한 auth 모듈을 modules에 등록합니다.
   }

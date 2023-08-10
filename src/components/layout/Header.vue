@@ -19,7 +19,6 @@
       <div id="menu" >
         <ul :class="{open:showNavMenu}" @click="routerClicked">
           <router-link class="menu-item" to="/bot-console" :style="{ color: lightFontColor }"><li>Bot-Console</li></router-link>
-          <router-link class="menu-item" to="/bot-order" :style="{ color: lightFontColor }"><li>Bot-주문제작</li></router-link>
           <router-link class="menu-item" to="/plan-purchase" :style="{ color: lightFontColor }"><li>Payment</li></router-link>
 
           <li class="menu-item" @click.stop="toggleUserMenu">
@@ -191,7 +190,7 @@ export default {
   opacity: 1; /* 메뉴가 열릴 때 투명도 설정 */
   transition: max-height 0.2s ease, opacity 0.2s ease; /* 트랜지션 속성 추가 */
   z-index: 1;
-  background-color: rgba(200, 231, 211, 0.6);
+  background-color: rgb(200, 231, 211);
   
 }
 .user-menu ul {
@@ -321,7 +320,7 @@ export default {
     opacity: 1; /* 메뉴가 열릴 때 투명도 설정 */
     transition: max-height 0.2s ease, opacity 0.2s ease; /* 트랜지션 속성 추가 */
     z-index: 1;
-    background-color: rgba(200, 231, 211, 0.6);
+    background-color: rgb(200, 231, 211);
     border-radius: 3px;
     color: #00410d;
   }

@@ -5,7 +5,6 @@ import Login from "@/views/Login.vue";
 import Signup from "@/views/Signup.vue";
 import ForgotPassword from "@/views/ForgotPassword.vue";
 import BotConsole from "@/views/BotConsole.vue";
-import BotOrder from "@/views/BotOrder.vue";
 import MyPage from "@/views/Mypage.vue";
 import Payment from "@/views/Payment.vue";
 
@@ -17,7 +16,6 @@ const routes = [
   { path: "/signup", component: Signup },
   { path: "/forgot-password", component: ForgotPassword },
   { path: "/bot-console", component: BotConsole },
-  { path: "/bot-order", component: BotOrder },
   { path: "/my-page", component: MyPage },
   { path: "/plan-purchase", component: Payment },
 ];

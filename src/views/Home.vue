@@ -27,7 +27,7 @@
             <div>
                 <h4>트레이딩뷰와 연동하여 <br> 손쉬운 자동매매를 구현합니다</h4>
             </div>
-            <br>
+            
             <div class="wellcomeBoxText">
                 <p>
                 sinamon은 트레이딩뷰와의 강력한 연동을 통해
@@ -40,24 +40,24 @@
         <div id="home-carousel">
             <Carousel></Carousel>
         </div>
-        <div>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <div id="home-card-list">
+          <CardList></CardList>
         </div>
       </section>
   
-      <section class="col-lg-6" id="chart_section">
-      </section>
-      <section class="col-lg-6" id="info_section"></section>
+
     </div>
   </template>
   
   <script>
     import Carousel from "../components/ui/Carousel";
+    import CardList from "../components/ui/CardList";
 
   export default {
     name: "VueHome",
     components: {
-        Carousel
+        Carousel,
+        CardList
     },
     data() {
       return {
@@ -94,7 +94,7 @@
         }, 5000);
       },
       scrollToBottom() {
-        window.scrollTo(0, window.innerHeight+60);
+        window.scrollTo(0, window.innerHeight+10);
       },
     },
   };
@@ -199,6 +199,12 @@
 #home-carousel {
     height: 50vh;
 }
+
+#home-card-list{
+  margin-top: 70px;
+}
+
+
 @media (max-width: 767px) {
   .wellcomeBoxText {
     font-size: large;

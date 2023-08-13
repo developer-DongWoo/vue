@@ -24,6 +24,7 @@
         text-align: center;
         font-size: x-large;
         font-weight: 800;
+        margin-top:50px;
         margin-bottom: 50px;
     }
 </style>

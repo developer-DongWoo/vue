@@ -1,15 +1,21 @@
 <template>
     <div>
         <div class="bot-page-title">Dashboard</div>
+        <DashBoardUserInfo></DashBoardUserInfo>
         <DashboardCard></DashboardCard>
+        <DashboardChart></DashboardChart>
     </div>
 </template>
 <script>
     import DashboardCard from "../../components/ui/DashBoardCard"
+    import DashboardChart from "../../components/ui/DashBoardChart"
+    import DashBoardUserInfo from "../../components/ui/DashBoardUserInfo"
     export default{
         name:"BotDashBoard",
         components:{
-            DashboardCard
+            DashboardCard,
+            DashboardChart,
+            DashBoardUserInfo
         }
     }
 </script>

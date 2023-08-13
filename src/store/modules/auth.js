@@ -1,8 +1,9 @@
 // auth.js
 import api from "../api"
 const state = {
-    isLoggedIn: false,
+    isLoggedIn: true,
     user: null,
+    ticket: "2023-12-25 23:20:19",
   };
   
   const mutations = {
@@ -40,6 +41,7 @@ const state = {
   const getters = {
     isLoggedIn: (state) => state.isLoggedIn,
     getUser: (state) => state.user,
+    ticket: (state) => state.ticket
   };
   
   export default {

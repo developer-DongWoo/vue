@@ -1,5 +1,6 @@
 <template>
   <!-- <button @click="login">Login</button> -->
+  <div style="height: 70px;">
   <div class="container-fluid" :style="{ backgroundColor: mainColor }" id="navBar-background">
     
     <div id="logo-wrapper">
@@ -43,8 +44,9 @@
       </div>
     </div>
     <!-- <section v-if="showUserMenu" class="darkBackground" @click="toggleUserMenu"></section> -->
-    <div v-if="showDarkBackground" class="dark-background" @click="darkBackgroundClicked" />
+    <!-- <div v-if="showDarkBackground" class="dark-background" @click="darkBackgroundClicked" /> -->
   </div>
+</div>
 </template>
 
 <script>
@@ -74,25 +76,25 @@ export default {
     return {
       showUserMenu: false, 
       showNavMenu: false,
-      showDarkBackground: false,
+      // showDarkBackground: false,
     };
   },
   methods: {
     toggleNavMenu() {
       this.showNavMenu = !this.showNavMenu;
       this.showUserMenu = false;
-      this.showDarkBackground = this.showNavMenu;
+      // this.showDarkBackground = this.showNavMenu;
     },
     toggleUserMenu(){
       this.showUserMenu = !this.showUserMenu;
-      if (!this.showNavMenu){
-        this.showDarkBackground = this.showUserMenu;
-      }
+      // if (!this.showNavMenu){
+      //   this.showDarkBackground = this.showUserMenu;
+      // }
     },
-    darkBackgroundClicked() {
-      this.routerClicked()
+    // darkBackgroundClicked() {
+    //   this.routerClicked()
       
-    },
+    // },
     routerClicked() {
       this.showNavMenu = false;
       this.showUserMenu = false;
@@ -112,6 +114,9 @@ export default {
   height: 70px;
   padding: 0;
   z-index: 999;
+  box-shadow: 1px 1px 3px 1px rgba(80, 255, 124, 0.489);
+  position: fixed;
+  background-color: rgb(255, 255, 255);
 }
 
 #logo {

@@ -7,6 +7,7 @@ import ForgotPassword from "@/views/ForgotPassword.vue";
 import BotConsole from "@/views/BotConsole.vue";
 import MyPage from "@/views/Mypage.vue";
 import Payment from "@/views/Payment.vue";
+import store from './store'; // Vuex 스토어 인스턴스를 가져옵니다.
 
 Vue.use(VueRouter);
 
@@ -21,8 +22,21 @@ const routes = [
 ];
 
 const router = new VueRouter({
-  mode : "history",
+  mode: "history",
   routes,
+});
+
+// 라우터 네비게이션 가드
+router.beforeEach((to, from, next) => {
+  // 세션 스토리지에서 로그인 정보를 가져옵니다.
+  const Authorization = sessionStorage.getItem('Authorization');
+  // 세션 스토리지에 로그인 정보가 있는 경우, Vuex 상태를 업데이트합니다.
+  if (Authorization) {
+    store.commit('login',Authorization); // Vuex 모듈의 login 변이를 호출하여 로그인 상태 업데이트
+  }
+
+  // 다음 단계로 진행합니다.
+  next();
 });
 
 export default router;

@@ -43,6 +43,7 @@
         this.selectedMenu = menu;
         this.$store.state.botPage = menu;
         this.$store.commit('setCurrentBotPage', menu)
+        this.toggleSidebar()
       },
       toggleSidebar() {
         this.showSlideBar = !this.showSlideBar;

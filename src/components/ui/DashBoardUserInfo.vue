@@ -56,7 +56,8 @@
                 </div>
                 <div class="col-12">
                   <div class="bot_dashboard_user_info_box">
-                    <canvas ref="myChartCanvas" :height="canvasHeight"></canvas>
+                    <canvas v-if="isSuccessGetUserInfo" ref="myChartCanvas" :height="canvasHeight"></canvas>
+                    <div v-else>API 정보가 잘못되었습니다.</div>
                   </div>
                 </div>
               </div>
@@ -95,7 +96,8 @@
         API: '',
         SEC: '',
         chart: null,
-        canvasHeight: 100
+        canvasHeight: 100,
+        isSuccessGetUserInfo: true
       };
     },
     mounted() {
@@ -194,7 +196,8 @@
             this.profitLossRatio = profitLossRatio;
           }
         } catch (error) {
-          console.error('수익 정보를 가져오는 중 오류 발생:', error);
+        //   console.error('수익 정보를 가져오는 중 오류 발생:', error);
+            this.isSuccessGetUserInfo = false;
         }
       }
     }

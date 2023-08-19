@@ -94,7 +94,7 @@
         }, 5000);
       },
       scrollToBottom() {
-        window.scrollTo(0, window.innerHeight+10);
+        window.scrollTo(0, window.innerHeight-60);
       },
     },
   };

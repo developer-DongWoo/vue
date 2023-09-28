@@ -1,10 +1,15 @@
 <template>
     <div>
-        결제
+        pay
     </div>
-</template>
-<script>
-    export default {
-        name:'VuePayment'
-    }
-</script>
+  </template>
+  
+  <script>
+  export default {
+      name:"vuePayment"
+  }
+  </script>
+  
+  <style>
+  
+  </style>

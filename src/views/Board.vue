@@ -1,12 +1,13 @@
 <template>
   <div>
-    botconsole
+
   </div>
 </template>
 
 <script>
+
 export default {
-    name:"botConsole"
+    name:"vueBoard"
 }
 </script>
 

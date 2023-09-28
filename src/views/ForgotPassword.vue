@@ -1,10 +1,15 @@
 <template>
     <div>
-        패스워드 찾기
+  forgot
     </div>
-</template>
-<script>
-    export default {
-        name:'ForgotPassword'
-    }
-</script>
+  </template>
+  
+  <script>
+  export default {
+      name:"forgotPassword"
+  }
+  </script>
+  
+  <style>
+  
+  </style>

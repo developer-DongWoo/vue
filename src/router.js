@@ -7,6 +7,7 @@ import ForgotPassword from "@/views/ForgotPassword.vue";
 import BotConsole from "@/views/BotConsole.vue";
 import MyPage from "@/views/Mypage.vue";
 import Payment from "@/views/Payment.vue";
+import Board from '@/views/Board.vue';
 import store from './store'; // Vuex 스토어 인스턴스를 가져옵니다.
 
 Vue.use(VueRouter);
@@ -19,6 +20,7 @@ const routes = [
   { path: "/bot-console", component: BotConsole },
   { path: "/my-page", component: MyPage },
   { path: "/plan-purchase", component: Payment },
+  { path: "/board", component: Board },
 ];
 
 const router = new VueRouter({

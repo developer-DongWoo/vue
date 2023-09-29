@@ -115,3 +115,10 @@
 .logo{
     height: 20px;
 }
+
+.policy{
+    padding-top: 20px;
+}
+.policy textarea{
+    width: 100%; resize: none; 
+}

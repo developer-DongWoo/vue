@@ -21,6 +21,12 @@
                     <div class="input_text">
                         <input type="password" placeholder="password confirm" id="password_check">
                     </div>
+                    <div class="policy">
+                        <input type="checkbox" id="serviceTerms">
+                        <label for="serviceTerms">이용약관에 동의합니다.</label>
+                        
+                        <textarea readonly name="이용약관" rows="4"></textarea>
+                    </div>
                     <div>
                         <p class="input_check_result"></p>
                     </div>
@@ -41,6 +47,12 @@
                         </svg>
                         Email로 가입하기 <span v-if="isSignupToEmail">취소</span>
                     </button>
+                    <router-link to="login">
+                        <button v-if="!isSignupToEmail" class="signup_type_button">
+                            
+                            로그인으로 이동
+                        </button>
+                    </router-link>
                 </section>
             </div>
         </div>

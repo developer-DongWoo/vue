@@ -2,7 +2,9 @@
     <div class="navar_frame">
         <section>
             <!-- logo section -->
-            <img src="../assets/logo.png" alt="logo image">
+            <router-link to="/">
+                <img src="../assets/logo.png" alt="logo image">
+            </router-link>
         </section>
         <section>
             <ul class="navbarMenu">

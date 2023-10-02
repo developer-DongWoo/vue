@@ -1,7 +1,9 @@
 .text_center{
     text-align: center;
 }
-
+.small_text{
+    font-size: smaller;
+}
 .navar_frame{
     display: flex;
     justify-content: space-between;

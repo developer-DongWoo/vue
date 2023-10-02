@@ -10,10 +10,18 @@
                     <div class="input_text">
                         <input type="password" placeholder="password" id="password">
                     </div>
-
+                    <!-- <div>
+                        <input type="checkbox" id="memory_login">
+                        <label for="memory_login">로그인 정보 기억하기</label>
+                    </div> -->
                     <div>
-                        <p class="input_check_result"></p>
+                        <router-link to="forgot-password">
+                            비밀번호가 생각나지 않아요
+                        </router-link>
                     </div>
+                    <!-- <div>
+                        <p class="input_check_result"></p>
+                    </div> -->
                     <button class="signup_submit_button">
                         Log In
                     </button>
@@ -31,7 +39,7 @@
                         </svg>
                         Email로 로그인 <span v-if="isLoginToEmail">취소</span>
                     </button>
-                    <router-link to="login">
+                    <router-link to="signup">
                         <button v-if="!isLoginToEmail" class="signup_type_button">
                             
                             회원가입으로 이동
@@ -50,6 +58,11 @@
       data(){
         return {
             isLoginToEmail:false
+        }
+      },
+      methods:{
+        loginToEmail(){
+            this.isLoginToEmail = !this.isLoginToEmail;
         }
       }
   }

@@ -18,7 +18,7 @@ const routes = [
   { path: "/signup", component: Signup },
   { path: "/forgot-password", component: ForgotPassword },
   { path: "/bot-console", component: BotConsole },
-  { path: "/my-page", component: MyPage },
+  { path: "/mypage", component: MyPage },
   { path: "/plan-purchase", component: Payment },
   { path: "/board", component: Board },
 ];

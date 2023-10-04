@@ -5,26 +5,32 @@
     font-size: smaller;
 }
 .navar_frame{
+    width: 100vw;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     height: 70px;
     padding: 10px;
+    background-color: white;
+    z-index: 1;
 }
 .navar_frame img{
     height: 100%;
 }
 .navbarMenu{
-    position: relative;;
+    position: relative;
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
     top: 50%; transform: translateY(-50%);
+    
 }
 .navar_menu_button{
     padding: 10px; text-decoration: none;
     color: green;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .user-dropdown{
@@ -99,7 +105,6 @@
 .signup_submit_button{
     width: 100%;
     padding: 10px;
-    background-color: white;
     border-radius: 10px;
     border-style: solid;
     border-width: 1px;
@@ -126,3 +131,199 @@
 .policy textarea{
     width: 100%; resize: none; 
 }
+.flex_section{
+    display: flex;
+}
+.sidebar_section{
+    margin-top: 70px;
+    padding-top: 20px;
+    min-width: 240px;
+    height: calc(100vh - 70px);
+    background-color: #ebf5eb;
+}
+.sidebar_section h5{
+    margin-bottom: 20px;
+}
+.sidebar_title{
+    margin-top: 0; width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-width: 0;
+    padding: 10px;
+}
+.sidebar_title h6{
+    margin: 0; padding:0; height: min-content;
+}
+.sidebar_title p{
+    margin: 0; padding: 0;
+}
+
+.sidebar_dropdown_menus{
+    list-style: none;
+}
+.dashboard_section{
+    margin-top: 70px;
+    padding-top: 20px;
+    height: calc(100vh - 70px);
+
+}
+.extend{
+    width: 100%;
+}
+.profile_box{
+    padding: 10px;
+}
+.profile_box ul{
+    list-style: none;
+}
+.square_box{
+    width: 100%;
+    max-width: 350px; max-height: 350px;
+    border-radius: 10px;
+    position: relative;
+}
+.square_box::after{
+    display: block;
+    content: "";
+    padding-bottom: 100%;
+}
+.square_box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5%;
+}
+.row.extend .dashboard_title{
+    margin-left: 10px;
+}
+
+
+.col-md-8 .profile_box ul{
+    list-style: none; padding: 0;
+}
+
+.col-md-8 .profile_box ul li{
+    border-style: solid;
+    border-width: 1px;
+    border-color: #6997692a;
+    background-color:#698d6909 ;
+    padding: 3px;
+    border-radius: 5px;
+    margin-top: 1px;
+    min-height: 30px;
+    justify-content: space-between;
+}
+.col-md-8 .profile_box ul li span{
+    justify-content: space-between;
+}
+.space_center{
+    justify-content: space-between;
+}
+.full_width{
+    width: 100vw;
+}
+.profile_change_button{
+    font-size: smaller;
+    padding: 0;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    margin-right: 10px;
+    text-decoration: underline;
+    color: #006e00;
+}
+
+.hamburger_button{
+    position: relative;
+    top: 50%; transform: translateY(-50%);
+    background-color: #3f3f3f;
+    color: #fff;
+    border: none;
+    padding: 2px 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(69, 255, 66, 0.2);
+    display: none;
+}
+.hamburger_button:hover{
+    box-shadow: 2px 2px 4px rgba(69, 255, 66, 0.8);
+    background-color: #5e5e5e;
+}
+.hamburger_button:active{
+    background-color: #3f3f3f;
+    box-shadow: 1px 1px 2px rgba(69, 255, 66, 0.8);
+}
+.hamburger_inner_line{
+    width: 26px;
+    background-color: #fff;
+    height: 2px;
+    margin: 6px 0;
+    display: block;
+}
+
+.navbarMenuSection{
+    display: flex;
+}
+.navbarMenuSectionMobile{
+    display: none;
+}
+
+.modal_background{
+    background-color: rgba(36, 61, 42, 0.281);
+    
+    width: 100vw; height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+}
+.modal_box{
+    width: 90%; max-width: 500px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 5px auto;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: block;
+}
+.small_margin{
+    margin: 5px;
+}
+@media screen and (max-width: 768px) {
+    .navbarMenuSection{
+        display: none;
+    }
+    .navbarMenuSectionMobile{
+        display: block;
+    }
+    .navbarMenu{
+        position: fixed;
+        display: none;
+        background-color: #80ff80;
+        top: 0px;
+        transform: translateY(70px); right: 0;
+        padding: 10px;
+    }
+    .navbarMenu li{
+        position: relative;
+        margin: 0px;
+        padding: 5px;
+    }
+
+    .hamburger_button{
+        position: relative;
+        top: 50%; transform: translateY(-50%);
+        background-color: #3f3f3f;
+        color: #fff;
+        border: none;
+        padding: 2px 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        box-shadow: 2px 2px 4px rgba(69, 255, 66, 0.2);
+        display: block;
+        height: 35px;
+        margin-right: 5px;
+    }
+  }
